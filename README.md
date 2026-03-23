@@ -21,7 +21,16 @@ A directory dashboard integrating with a public REST API to fetch and render use
   - Scalable UI components using Array methods (`.map()`, `.join()`).
   - Fully responsive layout ensuring mobile-first compatibility.
 
-### [ ] 02. Dashboard Project (Work in Progress)
+### [x] 02. Movie Search Dashboard
+
+A dynamic search interface that fetches and displays movie/TV show data based on real-time user input.
+
+- **API Integration:** [TVmaze Search API](https://api.tvmaze.com/search/shows)
+- **Key Implementations:**
+  - Form event handling (`submit`) and preventing default browser refresh (`e.preventDefault()`).
+  - Dynamic URL construction using Template Literals based on user input.
+  - Advanced UI/UX handling: loading states, empty search results, and missing image fallbacks.
+  - Strict responsive CSS Grid layout adapting from 4 columns to 1.
 
 ### [ ] 03. Dashboard Project (Work in Progress)
 

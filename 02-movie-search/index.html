@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошук Фільмів | API Dashboard</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <header class="header">
+        <h1 class="header__title">Movie Online</h1>
+        <form id="search-form" class="search-form">
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-form__input" 
+            placeholder="Введіть назву фільму (напр. Avatar)..."
+            autocomplete="off"
+            required
+          >
+          <button type="submit" class="search-form__btn">Шукати</button>
+        </form>
+      </header>
+
+      <main id="movies-container" class="movies-grid">
+        <p class="empty-state">Почніть пошук, щоб побачити результати.</p>
+      </main>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
