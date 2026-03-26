@@ -10,7 +10,7 @@ This repository serves as a practical roadmap and collection of standalone mini-
 
 ## Project Directory & Roadmap
 
-### [x] 01. Team Dashboard
+### 01. Team Dashboard
 
 A directory dashboard integrating with a public REST API to fetch and render user data.
 
@@ -21,7 +21,7 @@ A directory dashboard integrating with a public REST API to fetch and render use
   - Scalable UI components using Array methods (`.map()`, `.join()`).
   - Fully responsive layout ensuring mobile-first compatibility.
 
-### [x] 02. Movie Search Dashboard
+### 02. Movie Search Dashboard
 
 A dynamic search interface that fetches and displays movie/TV show data based on real-time user input.
 
@@ -32,11 +32,29 @@ A dynamic search interface that fetches and displays movie/TV show data based on
   - Advanced UI/UX handling: loading states, empty search results, and missing image fallbacks.
   - Strict responsive CSS Grid layout adapting from 4 columns to 1.
 
-### [ ] 03. Dashboard Project (Work in Progress)
+### 03. Crypto Market Dashboard
 
-### [ ] 04. Dashboard Project (Work in Progress)
+A live cryptocurrency tracking interface fetching real-time financial metrics for top coins on the market.
 
-### [ ] 05. Dashboard Project (Work in Progress)
+- **API Integration:** [CoinGecko API](https://www.coingecko.com/en/api)
+- **Key Implementations:**
+  - Real-time market data fetching and rendering using Async/Await.
+  - Advanced data formatting: `toLocaleString` for precise currency rendering and `Math.abs()` for clean percentage logic.
+  - Conditional UI rendering using ternary operators for dynamic market trend indicators (up/down, green/red styling).
+  - Custom "Fintech Blue" design system implemented with strict BEM architecture.
+
+### 04. Global Weather Radar
+
+A sleek, real-time weather tracking widget that fetches current meteorological data for any city worldwide.
+
+- **API Integration:** [OpenWeatherMap API](https://openweathermap.org/api)
+- **Key Implementations:**
+  - Authentication and secure API Key integration in URL parameters.
+  - Parsing and extracting data from deeply nested JSON objects.
+  - Error handling for invalid user inputs (HTTP 404/401 status catching).
+  - Premium UI design utilizing Glassmorphism (`backdrop-filter`) and CSS gradients.
+
+### 05. Dashboard Project (Work in Progress)
 
 ---
 
