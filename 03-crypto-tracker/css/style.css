@@ -1,0 +1,132 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  padding: 2rem;
+}
+
+.app-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.header__title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #00C2FF;
+  letter-spacing: 1px;
+}
+.header__btn {
+  background-color: #00C2FF;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.3s ease;
+}
+.header__btn:hover {
+  background-color: #00a8e0;
+}
+.header__btn:active {
+  transform: scale(0.95);
+}
+
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 992px) {
+  .crypto-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .crypto-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .crypto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- СТИЛІ ДЛЯ КАРТОК --- */
+.crypto-card {
+  background: #1e1e1e;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 190px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.crypto-card:hover {
+  transform: translateY(-5px);
+  border-color: #00C2FF;
+  box-shadow: 0 8px 20px rgba(0, 194, 255, 0.15);
+}
+.crypto-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: auto;
+}
+.crypto-card__logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: #111;
+}
+.crypto-card__info {
+  display: flex;
+  flex-direction: column;
+}
+.crypto-card__symbol {
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.crypto-card__name {
+  font-size: 0.9rem;
+  color: #888888;
+}
+.crypto-card__price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.crypto-card__change {
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+}
+.crypto-card__change--up {
+  color: #00ff88;
+}
+.crypto-card__change--down {
+  color: #ff4d4d;
+}/*# sourceMappingURL=style.css.map */
