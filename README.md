@@ -54,7 +54,16 @@ A sleek, real-time weather tracking widget that fetches current meteorological d
   - Error handling for invalid user inputs (HTTP 404/401 status catching).
   - Premium UI design utilizing Glassmorphism (`backdrop-filter`) and CSS gradients.
 
-### 05. Dashboard Project (Work in Progress)
+### 05. System Task Tracker (CRUD App)
+
+A robust, persistent task management application demonstrating full CRUD capabilities without a backend.
+
+- **Storage Integration:** Web Storage API (`localStorage`)
+- **Key Implementations:**
+  - Full CRUD operations (Create, Read, Update, Delete) strictly using Vanilla JavaScript.
+  - State management and data persistence using `JSON.stringify()` and `JSON.parse()`.
+  - Separation of concerns: dividing data logic (state) from UI rendering (DOM).
+  - Dynamic event handling for toggling task states and deleting specific objects from an array by ID.
 
 ---
 
