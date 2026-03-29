@@ -2,51 +2,66 @@ const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const moviesContainer = document.getElementById("movies-container");
 
-searchForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+function showMessage(message, isError = false) {
+  const colorStyle = isError ? ' style="color: #ff4d4d;"' : "";
+  moviesContainer.innerHTML = `<p class="empty-state"${colorStyle}>${message}</p>`;
+}
 
-  let searchTerm = searchInput.value.trim();
+function createMovieCard(item) {
+  const imageUrl =
+    item.show.image ?
+      item.show.image.medium
+    : "https://via.placeholder.com/210x295?text=No+Image";
+
+  const rating = item.show.rating?.average || "N/A";
+
+  return `
+    <article class="movie-card" lang="en">
+      <img src="${imageUrl}" alt="${item.show.name}" class="movie-card__img">
+      <div class="movie-card__content">
+        <h3 class="movie-card__title">${item.show.name}</h3>
+        <p class="movie-card__rating">⭐ ${rating}</p>
+      </div>
+    </article>
+  `;
+}
+
+function renderMovies(movies) {
+  return movies.map(createMovieCard).join("");
+}
+
+async function fetchMovies(searchTerm) {
+  const url = `https://api.tvmaze.com/search/shows?q=${searchTerm}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return await response.json();
+}
+
+async function handleSearch(e) {
+  e.preventDefault();
+  const searchTerm = searchInput.value.trim();
+
   if (searchTerm === "") {
-    moviesContainer.innerHTML =
-      '<p class="empty-state" style="color: #ff4d4d;">Будь ласка, введіть назву фільму.</p>';
+    showMessage("Будь ласка, введіть назву фільму.", true);
     return;
   }
 
-  const url = `https://api.tvmaze.com/search/shows?q=${searchTerm}`;
-
-  moviesContainer.innerHTML = '<p class="empty-state">Шукаємо фільми...</p>';
+  showMessage("Шукаємо фільми...");
 
   try {
-    let response = await fetch(url);
-    let data = await response.json();
+    const data = await fetchMovies(searchTerm);
+
     if (data.length === 0) {
-      moviesContainer.innerHTML =
-        '<p class="empty-state">На жаль, за вашим запитом нічого не знайдено.</p>';
+      showMessage("На жаль, за вашим запитом нічого не знайдено.");
       return;
     }
 
-    let moviesHTML = data
-      .map((item) => {
-        let imageUrl =
-          item.show.image ?
-            item.show.image.medium
-          : "https://via.placeholder.com/210x295?text=No+Image";
-        return `
-        <article class="movie-card" lang="en">
-          <img src="${imageUrl}" alt="${item.show.name}" class="movie-card__img">
-          <div class="movie-card__content">
-            <h3 class="movie-card__title">${item.show.name}</h3>
-            <p class="movie-card__rating">⭐ ${item.show.rating?.average || "N/A"}</p>
-          </div>
-        </article>
-      `;
-      })
-      .join("");
-
-    moviesContainer.innerHTML = moviesHTML;
+    moviesContainer.innerHTML = renderMovies(data);
   } catch (error) {
-    console.log("Помилка запиту:", error);
-    moviesContainer.innerHTML =
-      '<p class="empty-state" style="color: #ff4d4d;">Помилка мережі! Спробуйте пізніше.</p>';
+    showMessage("Помилка мережі! Спробуйте пізніше.", true);
   }
-});
+}
+
+searchForm.addEventListener("submit", handleSearch);
